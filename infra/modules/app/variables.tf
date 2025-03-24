@@ -53,3 +53,17 @@ variable "user_data_replace_on_change" {
   description = "Safety measure"
   default     = true
 }
+
+variable "app_image" {
+  description = "Docker image"
+}
+
+variable "port_container" {
+  description = "Port  in container"
+  default     = 5000
+}
+
+variable "port_host" {
+  description = "Port on host"
+  default     = 5000
+}

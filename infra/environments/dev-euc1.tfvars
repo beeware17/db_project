@@ -48,4 +48,7 @@ private_subnets_config = {
     map_public_ip_on_launch  = false
     nat_key                  = "public_c"
   }
+
 }
+
+app_image = "nikshopin/app:v1"

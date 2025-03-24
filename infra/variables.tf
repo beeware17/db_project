@@ -30,3 +30,8 @@ variable "private_subnets_config" {
   description = "Private subnets configuration"
   type        = any
 }
+
+variable "app_image" {
+  description = "Docker image"
+}
+

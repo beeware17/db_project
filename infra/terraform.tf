@@ -1,6 +1,12 @@
 ## TODO: Add provider and remote backend.
 terraform {
-  backend "local" {}
+  backend "s3" {
+    bucket  = "825765418393-app-tfstate"
+    key     = "tfstate"
+    region  = "eu-north-1"
+    profile = "demo"
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -11,5 +17,5 @@ terraform {
 
 provider "aws" {
   region  = var.aws_region
-  profile = "aws-free-tier"
+  profile = "demo"
 }

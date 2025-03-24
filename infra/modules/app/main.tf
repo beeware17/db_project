@@ -1,10 +1,14 @@
 resource "aws_instance" "app" {
-  ami                         = data.aws_ami.ubuntu.id
-  instance_type               = var.app_instance_type
-  subnet_id                   = local.app_subnet_id
-  iam_instance_profile        = aws_iam_instance_profile.app_ec2_instance_profile.name
-  vpc_security_group_ids      = [aws_security_group.app_ec2.id]
-  user_data                   = "" #TODO: To add
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = var.app_instance_type
+  subnet_id              = local.app_subnet_id
+  iam_instance_profile   = aws_iam_instance_profile.app_ec2_instance_profile.name
+  vpc_security_group_ids = [aws_security_group.app_ec2.id]
+  user_data = templatefile("${path.module}/templates/user_data.sh", {
+    app_image      = var.app_image,
+    port_host      = var.port_host,
+    port_container = var.port_container
+  })
   user_data_replace_on_change = var.user_data_replace_on_change
 
   root_block_device {

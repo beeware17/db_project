@@ -36,4 +36,5 @@ def create_user():
 
 if __name__ == '__main__':
     init_db()  # Initialize the in-memory DB
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
+

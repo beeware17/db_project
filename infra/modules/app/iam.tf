@@ -1,6 +1,6 @@
 data "aws_iam_policy_document" "ec2_assume_role" {
   statement {
-    sid = "AllowAssumeRoleForECS"
+    sid = "AllowAssumeRoleForEC2"
     principals {
       type        = "Service"
       identifiers = ["ec2.amazonaws.com"]
