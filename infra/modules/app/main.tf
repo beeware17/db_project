@@ -23,4 +23,7 @@ resource "aws_instance" "app" {
     delete_on_termination = true
   }
   tags = merge(local.common_tags, { "Name" : format(local.resource_name_suffix, "app-ec2") })
+  lifecycle {
+    create_before_destroy = true
+  }
 }

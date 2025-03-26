@@ -15,5 +15,15 @@ module "app" {
   vpc_id              = module.network.vpc_id
   private_subnets_ids = module.network.private_subnets_ids
   app_image           = var.app_image
+  depends_on          = [module.network, module.db]
 
+}
+
+module "db" {
+  source              = "./modules/db"
+  aws_region          = var.aws_region
+  environment         = var.environment
+  vpc_id              = module.network.vpc_id
+  private_subnets_ids = module.network.private_subnets_ids
+  depends_on          = [module.network]
 }
