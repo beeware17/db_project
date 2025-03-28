@@ -1,5 +1,5 @@
 resource "aws_instance" "app" {
-  ami                    = data.aws_ami.ubuntu.id
+  ami                    = "ami-0084a47cc718c111a"
   instance_type          = var.app_instance_type
   subnet_id              = local.app_subnet_id
   iam_instance_profile   = aws_iam_instance_profile.app_ec2_instance_profile.name

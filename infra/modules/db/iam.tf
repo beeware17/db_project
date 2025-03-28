@@ -16,6 +16,13 @@ data "aws_iam_policy_document" "db" {
     actions   = ["s3:*"]
     resources = ["*"]
   }
+  statement {
+    sid       = "AllowVolumeOperation"
+    effect    = "Allow"
+    actions = ["ec2:AttachVolume", "ec2:DetachVolume"]
+    resources = [aws_ebs_volume.db_ext.arn, aws_instance.db.arn]
+
+  }
 }
 
 resource "aws_iam_policy" "db_customer_managed" {

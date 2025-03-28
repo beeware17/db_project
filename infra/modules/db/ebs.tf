@@ -5,4 +5,7 @@ resource "aws_ebs_volume" "db_ext" {
   encrypted         = true
 
   tags = merge(local.common_tags, { "Name" : format(local.resource_name_suffix, "db-ext-ec2") })
+  # lifecycle {
+  #   prevent_destroy = true
+  # }
 }

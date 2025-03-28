@@ -18,3 +18,4 @@ locals {
 
   app_subnet_id = var.private_subnets_ids[0]
 }
+
